@@ -3,5 +3,5 @@
 Members:
 - Dylan
 - Austin
-- Issac
+- Isaac
 - Jai
