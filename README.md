@@ -43,3 +43,22 @@ Write clear, readable code with meaningful variable names
 Include comments when necessary
 
 Use a .env for any sensitive credentials
+
+## **Local Testing** 
+
+I created a docker-compose.yml file that allows you to test locally
+
+In order to use:
+- Make sure to have Docker and Docker Compose installed on your machine (installation varies by OS)
+- From the project root (where docker-compose.yml is located)
+```bash
+docker compose up -d
+```
+- Open your browser at http://localhost:8080
+- when done run
+```bash
+docker compose down
+```
+
+note:
+- If your having permission issues prefix your commands with `sudo` 
