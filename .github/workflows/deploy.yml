@@ -23,7 +23,7 @@ jobs:
           cd /var/www/html
           
           # Pull latest changes
-          git pull origin main || git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git .
+          git pull origin main || git clone https://github.com/avillann00/COP-4331-Simple-project.git .
           
           # Install/update PHP dependencies if you use Composer
           if [ -f composer.json ]; then
