@@ -22,8 +22,14 @@ jobs:
           # Navigate to web directory
           cd /var/www/html
           
-          # Pull latest changes
-          git pull origin main || git clone https://github.com/avillann00/COP-4331-Simple-project.git .
+          # If it's a git repo, pull changes
+          if [ -d ".git" ]; then
+            git pull origin main
+          else
+            # If not a git repo, remove everything and clone fresh
+            rm -rf * .*
+            git clone https://github.com/avillann00/COP-4331-Simple-project.git .
+          fi
           
           # Install/update PHP dependencies if you use Composer
           if [ -f composer.json ]; then
