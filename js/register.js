@@ -6,7 +6,7 @@ document.getElementById('registerForm').addEventListener('submit', function(e){
   const passwordConfirm = document.getElementById('passwordConfirm').value 
 
   if(password !== passwordConfirm){
-    document.getElementById('message').textContent = data.error
+    document.getElementById('message').textContent = 'Passwords do not match'
     return
   }
 
