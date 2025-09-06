@@ -12,34 +12,36 @@
 
     <main>
       <h1>Add Contact</h1>
-      <form id="addUserForm"> 
-        <input 
-          type="text"
-          placeholder="eg. John"
-          id="firstName"
-          required
-        />
-        <input 
-          type="text"
-          placeholder="eg. Doe"
-          id="lastName"
-          required
-        />
-        <input 
-          type="email"
-          placeholder="eg. example@domain.com"
-          id="email"
-          required
-        />
-        <input 
-          type="tel"
-          placeholder="eg. 000-000-0000"
-          id="phone"
-          required
-        />
-      <button type="submit">Add Contact</button>
-      </form>
-      <p id="message"></p>
+      <div class="info-box">
+        <form class="info-form" id="addUserForm"> 
+          <input 
+            type="text"
+            placeholder="eg. John"
+            id="firstName"
+            required
+          />
+          <input 
+            type="text"
+            placeholder="eg. Doe"
+            id="lastName"
+            required
+          />
+          <input 
+            type="email"
+            placeholder="eg. example@domain.com"
+            id="email"
+            required
+          />
+          <input 
+            type="tel"
+            placeholder="eg. 000-000-0000"
+            id="phone"
+            required
+          />
+        <button type="submit">Add Contact</button>
+        </form>
+        <p id="message"></p>
+      </div>
     </main>
 
     <script src="js/add.js"></script>
