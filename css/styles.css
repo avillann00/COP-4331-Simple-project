@@ -86,3 +86,31 @@ h1 {
   text-align: center;
 }
 
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background-color: white;
+  width: 15rem;
+  height: 20rem;
+}
+
+.contact-box-labels {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+.contact-label {
+
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+
