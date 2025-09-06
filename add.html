@@ -11,36 +11,37 @@
     </nav>
 
     <main>
-      <label>
-        Add Contact
-        <form id="addUserForm"> 
-          <input 
-            type="text"
-            placeholder="eg. John"
-            id="firstNameInput"
-            required
-          />
-          <input 
-            type="text"
-            placeholder="eg. Doe"
-            id="lastNameInput"
-            required
-          />
-          <input 
-            type="text"
-            placeholder="eg. example@domain.com"
-            id="emailInput"
-            required
-          />
-          <input 
-            type="text"
-            placeholder="eg. 000-000-0000"
-            id="phoneInput"
-            required
-          />
-        <button type="submit">Add Contact</button>
-        </form>
-      </label>
+      <h1>Add Contact</h1>
+      <form id="addUserForm"> 
+        <input 
+          type="text"
+          placeholder="eg. John"
+          id="firstName"
+          required
+        />
+        <input 
+          type="text"
+          placeholder="eg. Doe"
+          id="lastName"
+          required
+        />
+        <input 
+          type="email"
+          placeholder="eg. example@domain.com"
+          id="email"
+          required
+        />
+        <input 
+          type="tel"
+          placeholder="eg. 000-000-0000"
+          id="phone"
+          required
+        />
+      <button type="submit">Add Contact</button>
+      </form>
+      <p id="message"></p>
     </main>
+
+    <script src="js/add.js"></script>
   </body>
 </html>
