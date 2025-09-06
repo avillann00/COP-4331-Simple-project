@@ -18,8 +18,9 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
     }
     else{
       document.getElementById('message').textContent = `Welcome ${data.username}`
+
       // redirect to dashboard.html
-      // window.location.href = 'dashboard.html'
+      window.location.href = `dashboard.html?userId=${data.id}`
     }
   })
   .catch(error => console.error('Error: ', error))

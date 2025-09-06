@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search)
+const userId = urlParams.get('userId')
+
 document.getElementById('searchBox').addEventListener('input', function(e){
   e.preventDefault()
 
@@ -7,20 +10,26 @@ document.getElementById('searchBox').addEventListener('input', function(e){
     return
   }
 
-  fetch(`Search.php?search=${encodeURIComponent(search)}`, {
-    method: 'GET',
+  fetch('Search.php', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }
+    },
+    body: JSON.stringify({ userId, search })
   })
   .then(response => response.json())
   .then(data => {
     if(!data.error){
       // result boxes
-      const firstNameBox = document.getElementById('first-name-box').textContent = ''
-      const lastNameBox = document.getElementById('last-name-box').textContent = ''
-      const emailBox = document.getElementById('email-box').textContent = ''
-      const phoneBox = document.getElementById('phone-box').textContent = ''
+      const firstNameBox = document.getElementById('first-name-box')
+      const lastNameBox = document.getElementById('last-name-box')
+      const emailBox = document.getElementById('email-box')
+      const phoneBox = document.getElementById('phone-box')
+
+      firstNameBox.textContent = ''
+      lastNameBox.textContent = ''
+      emailBox.textContent = ''
+      phoneBox.textContent = ''
 
       data.results.forEach(contact => {
         // create result divs
