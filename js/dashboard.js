@@ -1,6 +1,10 @@
 const urlParams = new URLSearchParams(window.location.search)
 const userId = urlParams.get('userId')
 
+if(document.querySelector('nav a[href="add.html"]') && userId){
+  document.querySelector('nav a[href="add.html"]').href = `add.html?userId=${encodeURIComponent(userId)}`
+}
+
 document.getElementById('searchBox').addEventListener('input', function(e){
   e.preventDefault()
 
