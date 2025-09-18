@@ -1,0 +1,29 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node (if you have any frontend bits)
+node_modules/
+
+# PHP dependencies
+/vendor/
+/composer.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+*.sql
+*.sqlite
+
+# Docker
+db_data/
+*.pid
+*.seed
+
+# IDE
+.vscode/
+.idea/
