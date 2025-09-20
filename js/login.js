@@ -4,12 +4,12 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
   const username = document.getElementById('username').value 
   const password = document.getElementById('password').value 
 
-  fetch('Login.php', {
+  fetch('/LAMPAPI/Login.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ username: username, password: password })
+    body: JSON.stringify({ login: username, password: password })
   })
   .then(response => response.json())
   .then(data => {
@@ -17,10 +17,10 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
       document.getElementById('message').textContent = data.error
     }
     else{
-      document.getElementById('message').textContent = `Welcome ${data.username}`
+      document.getElementById('message').textContent = `Welcome ${data.firstName}`
 
       // redirect to dashboard.html
-      window.location.href = `dashboard.html?userId=${data.id}`
+      window.location.href = 'dashboard.html'
     }
   })
   .catch(error => console.error('Error: ', error))

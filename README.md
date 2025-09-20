@@ -62,3 +62,4 @@ docker compose down
 
 note:
 - If your having permission issues prefix your commands with `sudo` 
+- Also, you need to change 'localhost' to 'db' in all of the .php files in the connection line

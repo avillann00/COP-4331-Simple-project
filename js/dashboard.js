@@ -11,10 +11,15 @@ document.getElementById('searchBox').addEventListener('input', function(e){
   search = document.getElementById('search').value
 
   if(search.trim() === ''){
+    document.getElementById('first-name-box').textContent = ''
+    document.getElementById('last-name-box').textContent = ''
+    document.getElementById('email-box').textContent = ''
+    document.getElementById('phone-box').textContent = ''
+
     return
   }
 
-  fetch('Search.php', {
+  fetch('/LAMPAPI/SearchContact.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
