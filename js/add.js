@@ -14,7 +14,7 @@ document.getElementById('addUserForm').addEventListener('submit', function(e){
     return
   }
 
-  fetch('AddContact.php', {
+  fetch('/LAMPAPI/AddContact.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ document.getElementById('addUserForm').addEventListener('submit', function(e){
       document.getElementById('message').textContent = 'Successfully added new contact'
 
       // redirect to dashboard.html after successful add
-      window.location.href = `dashboard.html?userId=${userId}`
+      window.location.href = 'dashboard.html'
     }
   })
   .catch(error => console.error('Error: ', error))
