@@ -9,10 +9,6 @@
         exit();
     }
 
-    $firstName = $inData["firstName"];
-    $lastName = $inData["lastName"];
-    $phone = $inData["phone"];
-    $email = $inData["email"];
     $userID = $_SESSION["userId"];
     #$userID = $inData["userID"];
 
@@ -24,20 +20,20 @@
     else
     {
         // First check that user exists
-        $stmt = $conn->prepare("SELECT ID FROM Contacts WHERE firstName=? AND lastName=? AND phone=? AND email=? AND UserID=?");
-        $stmt->bind_param("ssssi", $firstName, $lastName, $phone, $email, $userID);
+        $stmt = $conn->prepare("SELECT ID FROM Users WHERE UserID=?");
+        $stmt->bind_param("i", $userID);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->fetch_assoc())
         {
-            $stmt = $conn->prepare("DELETE FROM Contacts WHERE ID=?");
+            $stmt = $conn->prepare("DELETE FROM Users WHERE ID=?");
             $stmt->bind_param("i", $result);
             $stmt->execute();
         }
         else
         {
-            returnWithError("Contact not found");
+            returnWithError("User not found");
         }
 
         $stmt->close();
