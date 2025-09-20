@@ -1,5 +1,7 @@
+
 <?php
 
+	session_start();
 	$inData = getRequestInfo();
 	
 	$id = 0;
@@ -20,6 +22,8 @@
 
 		if( $row = $result->fetch_assoc()  )
 		{
+			$_SESSION["userId"] = $row["ID"];   //save userId in session
+    		$_SESSION["username"] = $row["Login"];
 			returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
 		}
 		else

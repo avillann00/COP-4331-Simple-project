@@ -13,9 +13,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: myproject
-      MYSQL_USER: lampuser
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: COP4331
+      MYSQL_USER: TheBeast
+      MYSQL_PASSWORD: WeLoveCOP4331
     volumes:
       - db_data:/var/lib/mysql
     ports:
