@@ -1,6 +1,8 @@
 document.getElementById('registerForm').addEventListener('submit', function(e){
   e.preventDefault()
 
+  const firstName = document.getElementById('firstName').value 
+  const lastName = document.getElementById('lastName').value 
   const username = document.getElementById('username').value 
   const password = document.getElementById('password').value 
   const passwordConfirm = document.getElementById('passwordConfirm').value 
@@ -10,12 +12,12 @@ document.getElementById('registerForm').addEventListener('submit', function(e){
     return
   }
 
-  fetch('Register.php', {
+  fetch('/LAMPAPI/Register.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ username: username, password: password })
+    body: JSON.stringify({ firstName: firstName, lastName: lastName, login: username, password: password })
   })
   .then(response => response.json())
   .then(data => {
@@ -23,9 +25,8 @@ document.getElementById('registerForm').addEventListener('submit', function(e){
       document.getElementById('message').textContent = data.error
     }
     else{
-      document.getElementById('message').textContent = `Welcome ${data.username}`
-      // redirect to login.html
-      // window.location.href = 'login.html'
+      document.getElementById('message').textContent = `Welcome ${data.firstName} ${data.lastName}`
+      window.location.href = 'login.html'
     }
   })
   .catch(error => console.error('Error: ', error))
