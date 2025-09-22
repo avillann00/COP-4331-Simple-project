@@ -1,5 +1,17 @@
 const urlParams = new URLSearchParams(window.location.search)
-const userId = urlParams.get('userId')
+
+const givenFirstName = urlParams.get('firstName')
+const givenLastName = urlParams.get('lastName')
+const givenPhone = urlParams.get('phone')
+const givenEmail = urlParams.get('email')
+
+if(givenFirstName && givenLastName && givenPhone && givenEmail){
+  document.getElementById('firstName').value = givenFirstName
+  document.getElementById('lastName').value = givenLastName
+  document.getElementById('email').value = givenEmail
+  document.getElementById('phone').value = givenPhone
+}
+
 
 document.getElementById('addUserForm').addEventListener('submit', function(e){
   e.preventDefault()
@@ -14,12 +26,34 @@ document.getElementById('addUserForm').addEventListener('submit', function(e){
     return
   }
 
+  if(givenFirstName && givenLastName && givenPhone && givenEmail){
+    fetch('/LAMPAPI/UpdateContact.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, phone: phone })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.error){
+        document.getElementById('message').textContent = data.error
+      }
+      else{
+        window.location.href = 'dashboard.html'
+      }
+    })
+    .catch(error => console.error('Error updating contact: ', error))
+
+    return
+  }
+
   fetch('/LAMPAPI/AddContact.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ userId: userId, firstName: firstName, lastName: lastName, email: email, phone: phone })
+    body: JSON.stringify({ firstName: firstName, lastName: lastName, email: email, phone: phone })
   })
   .then(response => response.json())
   .then(data => {

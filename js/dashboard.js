@@ -44,7 +44,9 @@ document.getElementById('searchBox').addEventListener('input', function(e){
         const lastNameDiv = document.createElement('div')
         const emailDiv = document.createElement('div')
         const phoneDiv = document.createElement('div')
+        const changeDiv = document.createElement('div')
         const deleteButton = document.createElement('button')
+        const editButton = document.createElement('button')
 
         // add corresponding info
         firstNameDiv.textContent = contact.firstName
@@ -52,6 +54,21 @@ document.getElementById('searchBox').addEventListener('input', function(e){
         emailDiv.textContent = contact.email
         phoneDiv.textContent = contact.phone
         deleteButton.textContent = 'X'
+        editButton.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" 
+               fill="none" 
+               viewBox="0 0 24 24" 
+               stroke-width="1.5" 
+               stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="m16.862 4.487 1.687-1.688a1.875 
+                     1.875 0 1 1 2.652 2.652L6.832 
+                     19.82a4.5 4.5 0 0 1-1.897 
+                     1.13l-2.685.8.8-2.685a4.5 
+                     4.5 0 0 1 1.13-1.897L16.863 
+                     4.487Zm0 0L19.5 7.125" />
+          </svg>
+        `
 
         deleteButton.classList.add('delete-btn')
         // add the delete functionalify
@@ -81,12 +98,22 @@ document.getElementById('searchBox').addEventListener('input', function(e){
           location.reload()
         })
 
+        editButton.classList.add('edit-btn')
+        editButton.addEventListener('click', () => {
+          window.location.href = `add.html?firstName=${encodeURIComponent(contact.firstName)}&lastName=${encodeURIComponent(contact.lastName)}&phone=${encodeURIComponent(contact.phone)}&email=${encodeURIComponent(contact.email)}`
+        })
+
         // add divs to thier result boxes
         firstNameBox.appendChild(firstNameDiv)
         lastNameBox.appendChild(lastNameDiv)
         emailBox.appendChild(emailDiv)
         phoneBox.appendChild(phoneDiv)
-        deleteBox.appendChild(deleteButton)
+
+        changeDiv.style.display = 'flex'
+        changeDiv.style.gap = '0.25rem'
+        changeDiv.appendChild(deleteButton)
+        changeDiv.appendChild(editButton)
+        deleteBox.appendChild(changeDiv)
       })
     }
     else{
