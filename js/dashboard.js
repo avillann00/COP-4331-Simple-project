@@ -1,10 +1,3 @@
-const urlParams = new URLSearchParams(window.location.search)
-const userId = urlParams.get('userId')
-
-if(document.querySelector('nav a[href="add.html"]') && userId){
-  document.querySelector('nav a[href="add.html"]').href = `add.html?userId=${encodeURIComponent(userId)}`
-}
-
 document.getElementById('searchBox').addEventListener('input', function(e){
   e.preventDefault()
 
@@ -27,7 +20,7 @@ document.getElementById('searchBox').addEventListener('input', function(e){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ userId, search })
+    body: JSON.stringify({ search })
   })
   .then(response => response.json())
   .then(data => {

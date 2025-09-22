@@ -26,9 +26,12 @@
                 }
                 else
                 {
+                        // Hash the password before storing
+                        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
                         // Insert new user
                         $stmt = $conn->prepare("INSERT into Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
-                        $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
+                        $stmt->bind_param("ssss", $firstName, $lastName, $login, $hashedPassword);
                         $stmt->execute();
 
                         if ($stmt->affected_rows > 0)

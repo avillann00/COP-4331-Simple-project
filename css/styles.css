@@ -131,4 +131,31 @@ h1 {
 }
 .delete-btn:hover {
   background-color: darkred;
+
+.user-button {
+  padding: 0.75rem;
+  border: none;
+  background-color: gray;
+  color: white;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.user-button:hover {
+  background-color: red;
+}
+
+#accountButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+#dashboardNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
