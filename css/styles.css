@@ -12,11 +12,15 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding-top: 3rem; /* space for nav */
 }
 
+/* Navigation */
 nav {
   position: absolute;
   top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 nav a {
@@ -25,6 +29,7 @@ nav a {
   color: #333;
 }
 
+/* Main Content */
 main {
   display: flex;
   flex-direction: column;
@@ -35,6 +40,12 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.dashboardNav {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
 .intro {
   display: flex;
   flex-direction: column;
@@ -43,6 +54,7 @@ h1 {
   gap: 1rem;
 }
 
+/* Info Box / Form */
 .info-box {
   background-color: #e0e0e0;
   padding: 2rem;
@@ -86,6 +98,7 @@ h1 {
   text-align: center;
 }
 
+/* Dashboard / Contact Boxes */
 .contact-box {
   display: flex;
   flex-direction: column;
@@ -103,16 +116,13 @@ h1 {
   gap: 4rem;
 }
 
-.contact-label {
-
-}
-
 .dashboard-main {
   display: flex;
   flex-direction: column;
   gap: 4rem;
 }
 
+/* Delete Box */
 .delete-box {
   display: flex;
   flex-direction: column;
@@ -121,16 +131,46 @@ h1 {
   gap: 0.25rem;
 }
 
+/* Buttons */
 .delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: red;
   color: white;
   border: none;
   cursor: pointer;
   padding: 2px 6px;
   border-radius: 3px;
+  transition: background 0.2s ease;
 }
+
 .delete-btn:hover {
   background-color: darkred;
+}
+
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: darkgreen;
+}
+
+.edit-btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
 
 .user-button {
   padding: 0.75rem;
@@ -148,14 +188,7 @@ h1 {
   background-color: red;
 }
 
-#accountButton svg {
+.accountButton {
   width: 20px;
   height: 20px;
-}
-
-#dashboardNav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
