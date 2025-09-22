@@ -29,10 +29,12 @@
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if ($result->fetch_assoc())
+        if ($row = $result->fetch_assoc())
         {
+
+            $contactId = $row["ID"];
             $stmt = $conn->prepare("DELETE FROM Contacts WHERE ID=?");
-            $stmt->bind_param("i", $result);
+            $stmt->bind_param("i", $contactId);
             $stmt->execute();
         }
         else
