@@ -1,5 +1,4 @@
 <?php
-
 	session_start();
 	$inData = getRequestInfo();
 	
@@ -7,27 +6,37 @@
 	$firstName = "";
 	$lastName = "";
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331"); 	
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	
 	if( $conn->connect_error )
 	{
 		returnWithError( $conn->connect_error );
 	}
 	else
 	{
-		$stmt = $conn->prepare("SELECT ID,firstName,lastName FROM Users WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData["login"], $inData["password"]);
+		// Get the user record by login only, then verify password separately
+		$stmt = $conn->prepare("SELECT ID,firstName,lastName,Password FROM Users WHERE Login=?");
+		$stmt->bind_param("s", $inData["login"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
-		if( $row = $result->fetch_assoc()  )
+		if( $row = $result->fetch_assoc() )
 		{
-			$_SESSION["userId"] = $row["ID"];   //save userId in session
-    		$_SESSION["username"] = $row["Login"];
-			returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
+			// Verify the password using password_verify
+			if( password_verify($inData["password"], $row["Password"]) )
+			{
+				$_SESSION["userId"] = $row["ID"];   //save userId in session    
+				$_SESSION["username"] = $inData["login"]; // Fixed: use the login from input
+				returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
+			}
+			else
+			{
+				returnWithError("Invalid Credentials");
+			}
 		}
 		else
 		{
-			returnWithError("No Records Found");
+			returnWithError("Invalid Credentials");
 		}
 
 		$stmt->close();
