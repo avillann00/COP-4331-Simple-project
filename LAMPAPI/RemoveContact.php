@@ -1,12 +1,20 @@
 <?php
 
+    session_start();
+    
+
     $inData = getRequestInfo();
+    if (!isset($_SESSION["userId"])) {
+        returnWithError("Not logged in");
+        exit();
+    }
 
     $firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
     $phone = $inData["phone"];
     $email = $inData["email"];
-    $userID = $inData["userID"];
+    $userID = $_SESSION["userId"];
+    #$userID = $inData["userID"];
 
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if($conn->connect_error)
@@ -58,4 +66,4 @@
     {
         return json_decode(file_get_contents('php://input'), true);
     }
-
+?>
