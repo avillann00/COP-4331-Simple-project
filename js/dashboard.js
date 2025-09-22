@@ -77,6 +77,8 @@ document.getElementById('searchBox').addEventListener('input', function(e){
             }
           })
           .catch(error => console.error('Error deleting contact: ', error))
+
+          location.reload()
         })
 
         // add divs to thier result boxes
