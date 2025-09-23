@@ -38,7 +38,7 @@ document.getElementById('deleteAccount').addEventListener('click', function(e){
     }
     else{
       document.getElementById('message').textContent = 'Account successfully deleted'
-      window.location.href = 'Register.html'
+      window.location.href = 'register.html'
     }
   })
   .catch(error => {
