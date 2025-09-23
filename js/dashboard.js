@@ -73,6 +73,12 @@ document.getElementById('searchBox').addEventListener('input', function(e){
         deleteButton.classList.add('delete-btn')
         // add the delete functionalify
         deleteButton.addEventListener('click', () => {
+          const confirmed = confirm(`Are you sure you want to delete ${contact.firstName} ${contact.lastName}`)
+
+          if(!confirmed){
+            return
+          }
+
           fetch('/LAMPAPI/RemoveContact.php', {
             method: 'POST',
             headers: {
