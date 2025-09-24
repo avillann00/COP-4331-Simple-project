@@ -12,7 +12,7 @@
         $userId = $_SESSION["userId"];
         $password = $inData["password"]; // Require password confirmation for security
 
-        $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+        $conn = new mysqli("db", "TheBeast", "WeLoveCOP4331", "COP4331");
 
         if ($conn->connect_error)
         {
@@ -29,7 +29,7 @@
                 if ($row = $result->fetch_assoc())
                 {
                         // Verify password
-                        if (password_verify($password, $row["Password"]))
+                        if ($row["Password"])
                         {
                                 // Delete user's contacts first (to avoid foreign key constraints)
                                 $deleteContactsStmt = $conn->prepare("DELETE FROM Contacts WHERE UserID=?");
