@@ -1,19 +1,7 @@
-document.getElementById('searchBox').addEventListener('input', function(e){
-  e.preventDefault()
-
-  search = document.getElementById('search').value
+function runSearch(){
+  const input = document.getElementById('search')
+  const search = input ? input.value.trim() : ''
   document.getElementById('message').textContent = ''
-
-  if(search.trim() === ''){
-    document.getElementById('first-name-box').textContent = ''
-    document.getElementById('last-name-box').textContent = ''
-    document.getElementById('email-box').textContent = ''
-    document.getElementById('phone-box').textContent = ''
-    document.getElementById('delete-box').textContent = ''
-    document.getElementById('message').textContent = ''
-
-    return
-  }
 
   fetch('/LAMPAPI/SearchContact.php', {
     method: 'POST',
@@ -130,4 +118,14 @@ document.getElementById('searchBox').addEventListener('input', function(e){
     }
   })
   .catch(error => console.error('Error getting contact: ', error))
+}
+
+document.getElementById('searchBox').addEventListener('input', function(e){
+  e.preventDefault()
+
+  runSearch()
+})
+
+document.addEventListener('DOMContentLoaded', function(){
+  runSearch()
 })
