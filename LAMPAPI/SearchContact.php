@@ -15,7 +15,7 @@ if (!isset($_SESSION["userId"])) {
 $search = isset($inData["search"]) ? trim($inData["search"]) : "";
 
 // 4) Connect to the database (same values your team used elsewhere)
-$conn = new mysqli("db", "TheBeast", "WeLoveCOP4331", "COP4331");
+$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 if ($conn->connect_error) {
   respond([ "results" => [], "error" => $conn->connect_error ]);
 }

@@ -12,7 +12,7 @@
         $userId = $_SESSION["userId"];
         $password = $inData["password"]; // Require password confirmation for security
 
-        $conn = new mysqli("db", "TheBeast", "WeLoveCOP4331", "COP4331");
+        $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
         if ($conn->connect_error)
         {

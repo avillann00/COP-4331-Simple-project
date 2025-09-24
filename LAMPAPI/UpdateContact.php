@@ -14,7 +14,7 @@ $email = $inData["email"];
 $number = $inData["phone"]; // use as unique identifier
 $userID = $_SESSION["userId"];
 
-$conn = new mysqli("db", "TheBeast", "WeLoveCOP4331", "COP4331");
+$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 if ($conn->connect_error) {
     returnWithError($conn->connect_error);
     exit();
