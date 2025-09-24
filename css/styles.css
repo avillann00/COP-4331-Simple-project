@@ -5,8 +5,9 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f3f3;
+  font-family: 'Orbitron', Arial, sans-serif; /* Futuristic font */
+  background-color: #0a0a0f; /* Dark background */
+  color: #e0e0e0; /* Light gray text */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +16,15 @@ body {
   padding-top: 3rem; /* space for nav */
 }
 
-/* Navigation */
+/* neon glow helper */
+.neon {
+  text-shadow: 0 0 5px #ff00ff,
+               0 0 10px #ff00ff,
+               0 0 20px #ff00ff,
+               0 0 40px #ff00ff;
+}
+
+/* nav bar */
 nav {
   position: absolute;
   top: 1rem;
@@ -26,10 +35,16 @@ nav {
 nav a {
   margin-right: 1rem;
   text-decoration: none;
-  color: #333;
+  color: #0ff; /* neon cyan */
+  font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Main Content */
+nav a:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 8px #ff00ff;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -38,14 +53,18 @@ main {
 
 h1 {
   margin-bottom: 1rem;
+  color: #ff00ff;
+  text-shadow: 0 0 8px #ff00ff, 0 0 15px #0ff;
 }
 
+/* nav bar in the dashboard page */
 .dashboardNav {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
 
+/* intro text */
 .intro {
   display: flex;
   flex-direction: column;
@@ -54,15 +73,18 @@ h1 {
   gap: 1rem;
 }
 
-/* Info Box / Form */
+/* info-box (login/register) */
 .info-box {
-  background-color: #e0e0e0;
+  background: rgba(20, 20, 40, 0.9);
+  border: 1px solid #ff00ff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px #ff00ff;
   width: 300px;
+  color: #e0e0e0;
 }
 
+/* form */
 .info-form {
   display: flex;
   flex-direction: column;
@@ -71,58 +93,73 @@ h1 {
 
 .info-form input {
   padding: 0.5rem;
-  border: 1px solid #aaa;
+  border: 1px solid #0ff;
   border-radius: 6px;
   font-size: 1rem;
+  background-color: #111;
+  color: #0ff;
+  outline: none;
 }
 
+.info-form input:focus {
+  border-color: #ff00ff;
+  box-shadow: 0 0 8px #ff00ff;
+}
+
+/* submit button */
 .info-form button {
   padding: 0.75rem;
   border: none;
-  background-color: #4a90e2;
+  background-color: #ff00ff;
   color: white;
   font-size: 1rem;
   border-radius: 6px;
   cursor: pointer;
   margin-top: 0.5rem;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .info-form button:hover {
-  background-color: #357abd;
+  background-color: #0ff;
+  box-shadow: 0 0 10px #0ff;
 }
 
+/* message */
 #message {
   margin-top: 0.75rem;
-  color: red;
+  color: #ff4444;
   text-align: center;
 }
 
-/* Dashboard / Contact Boxes */
+/* contact box */
 .contact-box {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border: 1px solid #aaa;
+  border: 1px solid #0ff;
   border-radius: 6px;
-  background-color: white;
+  background-color: rgba(15, 15, 30, 0.95);
   width: 15rem;
   height: 20rem;
+  box-shadow: 0 0 12px #0ff;
+  color: #e0e0e0;
 }
 
+/* labels */
 .contact-box-labels {
   display: flex;
   flex-direction: row;
   gap: 4rem;
 }
 
+/* dashboard */
 .dashboard-main {
   display: flex;
   flex-direction: column;
   gap: 4rem;
 }
 
-/* Delete Box */
+/* delete-box */
 .delete-box {
   display: flex;
   flex-direction: column;
@@ -131,39 +168,42 @@ h1 {
   gap: 0.25rem;
 }
 
-/* Buttons */
+/* delete button */
 .delete-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: #ff0044;
   color: white;
   border: none;
   cursor: pointer;
   padding: 2px 6px;
   border-radius: 3px;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .delete-btn:hover {
-  background-color: darkred;
+  background-color: #ff0000;
+  box-shadow: 0 0 8px #ff0000;
 }
 
+/* edit button */
 .edit-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #007bff;
-  color: white;
+  background-color: #00ffaa;
+  color: black;
   border: none;
   cursor: pointer;
   padding: 2px 6px;
   border-radius: 3px;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .edit-btn:hover {
-  background-color: darkgreen;
+  background-color: #00ffcc;
+  box-shadow: 0 0 8px #00ffcc;
 }
 
 .edit-btn svg {
@@ -172,23 +212,59 @@ h1 {
   display: block;
 }
 
+/* account/user buttons */
 .user-button {
   padding: 0.75rem;
   border: none;
-  background-color: gray;
+  background-color: #ff00ff;
   color: white;
   font-size: 1rem;
   border-radius: 6px;
   cursor: pointer;
   margin-top: 0.5rem;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .user-button:hover {
-  background-color: red;
+  background-color: #0ff;
+  box-shadow: 0 0 10px #0ff;
 }
 
+/* account button */
 .accountButton {
   width: 20px;
   height: 20px;
+  filter: drop-shadow(0 0 5px #ff00ff);
+}
+
+/* Search box container */
+.searchBox {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+/* Search box input */
+.searchBox input {
+  padding: 0.75rem 1rem;
+  width: 250px;
+  border: 1px solid #0ff; /* neon cyan border */
+  border-radius: 8px;
+  background-color: #111; /* dark background */
+  color: #0ff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px #0ff;
+}
+
+.searchBox input::placeholder {
+  color: #888; /* subtle placeholder text */
+  font-style: italic;
+}
+
+.searchBox input:focus {
+  border-color: #ff00ff;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #0ff;
+  color: #ff00ff;
 }
